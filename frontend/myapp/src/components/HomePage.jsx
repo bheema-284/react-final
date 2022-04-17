@@ -6,9 +6,9 @@ export const HomePage = () => {
     <div>
       <h1>HomePage</h1>
       <div id="home">
-        <button onClick={() => navigate('/login')}>Login</button>
-        <button onClick={() => navigate('/register')}>Register</button>
-        <button onClick={() => navigate('/home')}>Landing Page</button>
+        <button id='button' onClick={() => navigate('/login')}>Login</button>
+        <button id='button' onClick={() => navigate('/register')}>Register</button>
+        <button id='button' onClick={() => navigate('/home')}>Landing Page</button>
       </div>
     </div>
   );

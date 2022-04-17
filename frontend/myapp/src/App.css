@@ -81,3 +81,17 @@ display: flex;
   width: 50%;
   margin: auto;
 }
+#inp{
+  width:250px;
+  height: 35px;
+  border: 1px solid #d26c6c;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+#inps{
+  width:270px;
+  height: 35px;
+  border: 1px solid #d26c6c;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
