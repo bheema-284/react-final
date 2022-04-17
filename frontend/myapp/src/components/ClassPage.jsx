@@ -2,57 +2,47 @@ import axios from 'axios';
 import '../App.css';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { TableRow } from './Teachers';
-import { SortAndFilterButtons } from './SortAndFilterButtons';
-export const Home = () => {
-  const [teachers, setTeachers] = useState([]);
+import { TableRows } from './Classes';
+import { Buttons } from './Buttons';
+export const ClassPage = () => {
+  const [classes, setClasses] = useState([]);
   function handleSort(term) {
     if (term === 'ti') {
-      let x = teachers.sort((a, b) => a.id - b.id);
+      let x = classes.sort((a, b) => a.id - b.id);
       console.log(x);
-      setTeachers([...x]);
+      setClasses([...x]);
     }
     if (term === 'tg') {
-      let x = teachers.sort((a, b) => b.id - a.id);
+      let x = classes.sort((a, b) => b.id - a.id);
       console.log(x);
-      setTeachers([...x]);
-    }
-    if (term === 'pa') {
-      let x = teachers.sort((a, b) => a.age - b.age);
-      console.log(x);
-      setTeachers([...x]);
-    }
-    if (term === 'pd') {
-      let x = teachers.sort((a, b) => b.age - a.age);
-      console.log(x);
-      setTeachers([...x]);
+      setClasses([...x]);
     }
     if (term === 'td') {
-      let x = teachers.sort((a, b) => {
-        if (a.gender > b.gender) return -1;
-        if (a.gender < b.gender) return 1;
+      let x = classes.sort((a, b) => {
+        if (a.section > b.section) return -1;
+        if (a.section < b.section) return 1;
         return 0;
       });
       console.log(x);
-      setTeachers([...x]);
+      setClasses([...x]);
     }
     if (term === 'ta') {
-      let x = teachers.sort((a, b) => {
-        if (a.gender > b.gender) return 1;
-        if (a.gender < b.gender) return -1;
+      let x = classes.sort((a, b) => {
+        if (a.subject > b.subject) return 1;
+        if (a.subject < b.subject) return -1;
 
         return 0;
       });
       console.log(x);
-      setTeachers([...x]);
+      setClasses([...x]);
     }
   }
   useEffect(() => getData(), []);
 
   const getData = () => {
-    axios.get(`http://localhost:8080/teacher`).then((res) => {
+    axios.get(`http://localhost:8080/class`).then((res) => {
       console.log('res data', res.data);
-      setTeachers(res.data.teachersData);
+      setClasses(res.data.classessData);
     });
   };
 
@@ -85,20 +75,20 @@ export const Home = () => {
       <h2 style={{ textAlign: 'center', backgroundColor: '#cecece' }}>Home</h2>
       <div id="btns">
         {' '}
-        <SortAndFilterButtons handleSort={handleSort} />
+        <Buttons handleSort={handleSort} />
       </div>
       <MainDiv>
-        <h2 style={{ color: 'white' }}>List of Teachers</h2>
+        <h2 style={{ color: 'white' }}>List of Classes</h2>
         <div className="subDiv">
           <table>
             <tr>
               <th>id</th>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Gender</th>
+              <th>Grade</th>
+              <th>Section</th>
+              <th>Subject</th>
             </tr>
-            {teachers.map((el) => (
-              <TableRow key={el.id} data={el} />
+            {classes.map((el) => (
+              <TableRows key={el.id} data={el} />
             ))}
           </table>
         </div>

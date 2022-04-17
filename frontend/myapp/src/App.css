@@ -20,3 +20,64 @@
   text-decoration: underline;
   color: rgb(58, 83, 205);
 }
+
+#aa:hover{
+  text-decoration: underline;
+  color: blue;
+}
+
+#aa{
+  text-decoration: none;
+  color: black;
+}
+.homeContainer{
+  background-color: aqua;
+  margin-top: 0%;
+  height: 530px;
+}
+.subDiv{
+  background-color: bisque;
+  height: 400px;
+  overflow: scroll;
+}
+#btns{
+  background-color: rgb(114, 77, 21);
+  margin-bottom: 5px;
+  padding: 10px;  
+  height: 30px;
+  text-align: center;
+  
+}
+#bt{
+  width: 60%;
+  margin: auto;
+  display: flex;
+  gap: 5px;
+  
+}
+#button{
+background-color: #d26c6c;
+height: 30px;
+width: 180px;
+border-radius: 5px;
+border: transparent;
+}
+#button:hover{
+background-color: rgb(224, 176, 117);
+height: 30px;
+width: 180px;
+border-radius: 5px;
+border: transparent;
+
+}
+.sortButtons{
+display: flex;
+  gap: 15px;
+  margin: auto;   
+}
+#home{
+  display: flex;
+  gap: 10px;
+  width: 50%;
+  margin: auto;
+}
