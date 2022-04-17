@@ -1,9 +1,7 @@
-const app = require("../index");
-const express = require('express');
-const mongoose = require('mongoose');
+const app = require('./index');
 const port = process.env.PORT || 8080;
-const connect = require("./Configs/db");
-app.listen(8080, async () => {
+const connect = require('./Configs/db');
+app.listen(port, async () => {
   await connect();
-  console.log("Listining to the  port",port);
+  console.log('Listining to the  port', port);
 });

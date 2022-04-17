@@ -1,58 +1,61 @@
-// Main Teachers's Controll
-
-const Teacher = require('../Models/teachers.model');
 const express = require('express');
+
+const mongoose = require('mongoose');
 
 const router = express.Router();
 
-router.post('', async (req, res) => {
+const Teacher = require('../Models/teachers.model');
+
+router.post('/', async (req, res) => {
   try {
-    const teacher = await Teacher.create(req.body);
-    return res.status(200).send(teacher);
+    const teacherData = await Teacher.create(req.body);
+    res.status(200).json({ teacherData: teacherData });
   } catch (e) {
-    return res.status(500).send(e.message);
+    res.status(500).json({ Staus: 'failed', error: e.message });
   }
 });
 
-router.get('', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const teacher = await Teacher.find().lean().exec();
-    return res.status(200).send(teacher);
+    const teachersData = await Teacher.find().lean().exec();
+    res.status(200).json({ teachersData: teachersData });
   } catch (e) {
-    return res.status(500).send(e.message);
+    res.status(500).json({ Staus: 'failed', error: e.message });
   }
 });
 
 router.get('/:id', async (req, res) => {
   try {
-    const teacher = await Teacher.findById(req.params.id);
-    return res.status(200).send(teacher);
+    const teacherData = await Teacher.findById(req.params.id).lean().exec();
+    res.status(200).json({ teacherData: teacherData });
   } catch (e) {
-    return res.status(500).send(e.message);
+    res.status(500).json({ Staus: 'failed', error: e.message });
   }
 });
 
 router.patch('/:id', async (req, res) => {
   try {
-    const teacher = await Teacher.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    })
+    const teacherData = await Teacher.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true },
+    )
       .lean()
       .exec();
-    return res.status(200).send(teacher);
+    res.status(200).json({ teacherData: teacherData });
   } catch (e) {
-    return res.status(500).send(e.message);
+    res.status(500).json({ Staus: 'failed', error: e.message });
   }
 });
 
 router.delete('/:id', async (req, res) => {
   try {
-    const teacher = await Teacher.findByIdAndDelete(req.params.id)
+    const teacherData = await Teacher.findByIdAndDelete(req.params.id)
       .lean()
       .exec();
-    return res.status(200).send(teacher);
+    res.status(200).json({ teacherData: teacherData });
   } catch (e) {
-    return res.status(500).send(e.message);
+    res.status(500).json({ Staus: 'failed', error: e.message });
   }
 });
 
